@@ -9,10 +9,10 @@ public:
     bool login(const std::string& username, const std::string& password);
     void logout();
     void view_booklist();
-    void search_book(const std::string& title, const std::string& author, const std::string& ISBN);
-    void checkout(const std::string& title, const std::string& author, const std::string& ISBN);
-    void return_book(const std::string& title, const std::string& author, const std::string& ISBN);
-    void renew_book(const std::string& title, const std::string& author, const std::string& ISBN);
+    void search_book(const std::string& title, const std::string& author, const std::string& isbn);
+    void checkout(const std::string& title, const std::string& author, const std::string& isbn);
+    void return_book(const std::string& title, const std::string& author, const std::string& isbn);
+    void renew_book(const std::string& title, const std::string& author, const std::string& isbn);
 private:
     int noOfBorrowBooks;
     int noOfReservedBooks;
