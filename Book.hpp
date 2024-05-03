@@ -1,25 +1,46 @@
 // 362 Semester Project
-// File purpose: Class for a Bookitem that will be used throughout the project
+// File info: Houses Book class and a function to display the book after a search
 
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <map>
+#include <nlohmann/json.hpp> // JSON library
+
+using json = nlohmann::json;
 
 class Book {
 private:
-  std::string title;
-  std::string author;
-  int ISBN;
+    std::string title;
+    std::string author;
+    std::string ISBN;
 
 public:
-  // Constructor
-  Book(std::string title, std::string author, int ISBN)
-      : title(title), author(author), ISBN(ISBN) {}
+    Book(std::string title, std::string author, std::string ISBN)
+        : title(title), author(author), ISBN(ISBN) {}
 
-  // Getters
-  std::string getTitle() { return title; } 
-  std::string getAuthor() { return author; }
-  int getISBN() { return ISBN; }
+    std::string getTitle() const { return title; }
+    std::string getAuthor() const { return author; }
+    std::string getISBN() const { return ISBN; }
+
+    void display() {
+        std::cout << "Title: " << title << std::endl;
+        std::cout << "Author: " << author << std::endl;
+        std::cout << "ISBN: " << ISBN << std::endl;
+    }
 };
 
-  // Other functions as needed
-};
+void loadBooksFromJsonFile(const std::string& filename, std::map<std::string, Book>& books) {
+    std::ifstream file(filename);
+    if (file.is_open()) {
+        json jsonData;
+        file >> jsonData;
+
+        for (const auto& bookData : jsonData["book"]) {
+            Book book(bookData["title"], bookData["author"], bookData["isbn"]);
+            books[book.getTitle()] = book;
+        }
+
+        file.close();
+    }
+}
