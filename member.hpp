@@ -22,9 +22,6 @@ public:
   std::string getMemberPassword() const; 
   
   // Member Functions
-  void search_book(const BookItem& book);
-  void return_book(const BookItem& book);
-  void renew_book(const BookItem& book);
   void show_book_borrowed(const std::string& memberID);
   void show_notification(const std::string& memberID);
 };
