@@ -29,18 +29,3 @@ public:
         std::cout << "ISBN: " << ISBN << std::endl;
     }
 };
-
-void loadBooksFromJsonFile(const std::string& filename, std::map<std::string, Book>& books) {
-    std::ifstream file(filename);
-    if (file.is_open()) {
-        json jsonData;
-        file >> jsonData;
-
-        for (const auto& bookData : jsonData["book"]) {
-            Book book(bookData["title"], bookData["author"], bookData["isbn"]);
-            books[book.getTitle()] = book;
-        }
-
-        file.close();
-    }
-}
