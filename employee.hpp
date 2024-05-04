@@ -26,8 +26,6 @@ public:
   void search_book(const BookItem& book);
   void search_member(const Member& member);
   void send_email(const Member& member, const std::string& subject, const std::string& message);
-  void manage_book(const BookItem& book);
-  void manage_member(const Member& member);
 
 };
 
