@@ -11,6 +11,7 @@ private:
   std::string accountID;
   std::string accountPassword;
   std::string accountType;
+  bool isLoggedIn;
 
 public:
   // Constructor
@@ -28,9 +29,21 @@ public:
   void setAccountType(const std::string& accountType) { this->accountType = accountType; }
 
   // Account Functions
-  bool login(const std::string& userID, const std::string& password);
-  void logout();
-  // more if needed
+  bool login(const std::string& userID, const std::string& password) {
+    if (userID == accountID && password == accountPassword) {
+      isLoggedIn = true;
+      return true; // Login success
+    }
+    return false; // Login failed
+  }
+
+  void logout() {
+    isLoggedIn = false;
+  }
+
+  bool isLogged() const {
+    return isLoggedIn;
+  }
 };
 
 #endif // ACCOUNT_HPP
