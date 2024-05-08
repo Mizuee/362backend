@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include <map>
 #include "book.hpp" // Include the Book class header
@@ -18,12 +17,10 @@ public:
                     pair.second.checkout();
                     return true;
                 } else {
-                    std::cout << "Book is already checked out." << std::endl;
                     return false;
                 }
             }
         }
-        std::cout << "Book not found." << std::endl;
         return false;
     }
 
@@ -35,12 +32,10 @@ public:
                     pair.second.renew();
                     return true;
                 } else {
-                    std::cout << "Book is not checked out." << std::endl;
                     return false;
                 }
             }
         }
-        std::cout << "Book not found." << std::endl;
         return false;
     }
 
@@ -52,12 +47,10 @@ public:
                     pair.second.returnBook();
                     return true;
                 } else {
-                    std::cout << "Book is not checked out." << std::endl;
                     return false;
                 }
             }
         }
-        std::cout << "Book not found." << std::endl;
         return false;
     }
 };
