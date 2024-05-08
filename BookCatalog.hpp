@@ -1,10 +1,10 @@
-// Book Catalog File
+// book catalog file
 
-#include <iostream>
 #include <string>
 #include <fstream>
 #include <map>
 #include <nlohmann/json.hpp> // JSON library
+#include "book.hpp" // Include the Book class header
 
 using json = nlohmann::json;
 
@@ -13,7 +13,7 @@ private:
     std::map<std::string, Book> books;
 
 public:
-    //loads the book catalog from the bd.json file
+    // Loads the book catalog from the bd.json file
     void loadBooksFromJsonFile(const std::string& filename) {
         std::ifstream file(filename);
         if (file.is_open()) {
@@ -26,15 +26,6 @@ public:
             }
 
             file.close();
-        }
-    }
-
-    void searchByTitle(const std::string& title) {
-        if (books.find(title) != books.end()) {
-            Book& foundBook = books[title];
-            foundBook.display();
-        } else {
-            std::cout << "Book not found by title." << std::endl;
         }
     }
 };
