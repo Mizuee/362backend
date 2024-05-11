@@ -23,9 +23,20 @@ public:
     std::string getAuthor() const { return author; }
     std::string getISBN() const { return ISBN; }
 
-    void display() {
-        std::cout << "Title: " << title << std::endl;
-        std::cout << "Author: " << author << std::endl;
-        std::cout << "ISBN: " << ISBN << std::endl;
-    }
+  bool isCheckedOut() const { return checkedOut; } // Check if book is checked out
+
+  void checkout()
+  {
+    checkedOut = true; // Mark the book as checked out
+  }
+
+  void renew()
+  {
+    // Renewing the book: keeping the status of checkedOut as true
+  }
+
+  void returnBook()
+  {
+    checkedOut = false; // Mark the book as returned
+  }
 };
